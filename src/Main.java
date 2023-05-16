@@ -45,7 +45,7 @@ public class Main {
                     break;
 
                 case "-":
-                    if(num1 > num2){
+                    if(num1 < num2){
                         scan.close();
                         throw new Exception(); // Исключение отрицательного ответа среди римских чисел
                     }
