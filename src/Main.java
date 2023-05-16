@@ -8,13 +8,12 @@ public class Main {
 
         String calc = scan.nextLine();
         String [] strings = calc.split(" ");
-        String sign = strings[1];
 
         if (strings.length != 3) {
             scan.close();
             throw new Exception();
         }
-
+        String sign = strings[1];
         String[] romanNum = {
             "N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII",
             "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV",
