@@ -64,9 +64,9 @@ public class Main {
                 default:
                     scan.close();
                     throw new Exception(); // Если нет нужного знака
-                }
             }
-        else if(lineSearch( numbers, strings[0]) != -1 & lineSearch( numbers, strings[0]) != -1) {
+        }
+        else if(lineSearch( numbers, strings[0]) != -1 & lineSearch( numbers, strings[2]) != -1) {
             int num1 = Integer.parseInt(strings[0]);
             int num2 = Integer.parseInt(strings[2]);
             switch(sign){
@@ -93,11 +93,11 @@ public class Main {
                 default:
                     scan.close();
                     throw new Exception(); // Если нет нужного знака
-                }
-            } else {
-                scan.close();
-                throw new Exception();
             }
+        } else {
+            scan.close();
+            throw new Exception();
+        }
 
 
         System.out.println(result);
