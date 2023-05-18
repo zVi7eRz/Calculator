@@ -8,9 +8,7 @@ public class Main {
 
         String [] strings = calc.split(" "); // scan = "2 + 4" : string = ["2","+","4"]
 
-        if (strings.length != 3) {
-            throw new Exception(); // выдаст ошибку, если количество символов больше 3
-        }
+        if (strings.length != 3) {throw new Exception();} // выдаст ошибку, если количество символов больше 3
         String sign = strings[1], result = "";
         String[] romanNum = {
             "N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII",
