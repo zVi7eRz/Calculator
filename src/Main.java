@@ -7,10 +7,10 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
         String calc = scan.nextLine();
+        scan.close();
         String [] strings = calc.split(" ");
 
         if (strings.length != 3) {
-            scan.close();
             throw new Exception();
         }
         String sign = strings[1];
@@ -35,7 +35,6 @@ public class Main {
             int num1 = lineSearch( romanNum, strings[0]); 
             int num2 = lineSearch( romanNum, strings[2]);
             if (num1 > 10 | num2 > 10){
-                scan.close();
                 throw new Exception(); // Исключение больших рим. чисел
             }
             switch(sign){
@@ -46,7 +45,6 @@ public class Main {
 
                 case "-":
                     if(num1 < num2){
-                        scan.close();
                         throw new Exception(); // Исключение отрицательного ответа среди римских чисел
                     }
                     result = romanNum[(num1 - num2)];
@@ -61,7 +59,6 @@ public class Main {
                     break;
 
                 default:
-                    scan.close();
                     throw new Exception(); // Если нет нужного знака
             }
         }
@@ -84,23 +81,19 @@ public class Main {
                     
                 case "/":
                     if (num2 == 0) {
-                        scan.close();
                         throw new Exception(); // на 0 делить нельзя
                     }
                     result = Integer.toString(num1 / num2);
                     break;
                 default:
-                    scan.close();
                     throw new Exception(); // Если нет нужного знака
             }
         } else {
-            scan.close();
             throw new Exception();
         }
 
 
         System.out.println(result);
-        scan.close();
 }
     // проверка нахождения элемента в списке, возвращает index элемента в списке или -1 если его нет.
     public static int lineSearch(String arr[], String elementToSearch) {
