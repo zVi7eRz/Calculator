@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-
         Scanner scan = new Scanner(System.in);
         String calc = scan.nextLine();
         scan.close();
@@ -27,70 +26,27 @@ public class Main {
 
         if (lineSearch( romanNum, strings[0]) != -1 & lineSearch( romanNum, strings[2]) != -1) { // проверяем являются ли цифры римскими
             int num1 = lineSearch( romanNum, strings[0]), num2 = lineSearch( romanNum, strings[2]);
-            if (num1 > 10 | num2 > 10){
-                throw new Exception(); // Исключение больших рим. чисел
-            }
-            switch(sign){
-
-                case "+":
-                    result = romanNum[(num1 + num2)];
-                    break;
-
-                case "-":
-                    if(num1 < num2){
-                        throw new Exception(); // Исключение отрицательного ответа среди римских чисел
-                    }
-                    result = romanNum[(num1 - num2)];
-                    break;
-
-                case "*":
-                    result = romanNum[(num1 * num2)];
-                    break;
-
-                case "/":
-                    result = romanNum[(num1 / num2)];
-                    break;
-
-                default:
-                    throw new Exception(); // Если нет нужного знака
-            }
+            if (num1 > 10 | num2 > 10){throw new Exception();} // Исключение больших рим. чисел
+            int i = switchSign(num1, num2, sign) ;
+            if (i < -1) {throw new Exception();}
+            result = romanNum[i];
         }
         else if(lineSearch( numbers, strings[0]) != -1 & lineSearch( numbers, strings[2]) != -1) {
             int num1 = Integer.parseInt(strings[0]), num2 = Integer.parseInt(strings[2]);
-            switch(sign){
-
-                case "+":
-                    result = Integer.toString(num1 + num2);
-                    break;
-
-                case "-":
-                    result = Integer.toString(num1 - num2);
-                    break;
-
-                case "*":
-                    result = Integer.toString(num1 * num2);
-                    break;
-                    
-                case "/":
-                    if (num2 == 0) {
-                        throw new Exception(); // на 0 делить нельзя
-                    }
-                    result = Integer.toString(num1 / num2);
-                    break;
-                default:
-                    throw new Exception(); // Если нет нужного знака
-            }
-        } else {
-            throw new Exception();
-        }
-
+            result = Integer.toString( switchSign(num1, num2, sign) );
+        } else { throw new Exception();}
         System.out.println(result);
-}
+    }
     public static int lineSearch(String arr[], String elementToSearch) { // проверка нахождения элемента в списке, возвращает index элемента в списке или -1 если его нет.
         for (int i = 0; i < arr.length; ++i) {
             if (arr[i].equals(elementToSearch))
-                return i;
-        }
-        return -1;
-    }
+                return i;}
+        return -1;}
+    public static int switchSign(int num1, int num2, String sign) {
+        switch (sign){
+            case "+": return (num1 + num2); 
+            case "-": return (num1 - num2);        
+            case "*": return (num1 * num2);
+            case "/": if (num2 == 0) { return -999;} return num1 / num2;      
+            default: return -999; } }
 }
